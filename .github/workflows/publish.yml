@@ -19,6 +19,8 @@ jobs:
         with:
           fetch-depth: 0  # Required for Lerna to detect changes
 
+      - uses: pnpm/action-setup@v6
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
