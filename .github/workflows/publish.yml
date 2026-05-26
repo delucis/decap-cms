@@ -26,26 +26,26 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm i
 
       - name: Build packages
-        run: npm run build
+        run: pnpm build
 
       - name: Run tests
-        run: npm run test:ci
+        run: pnpm test:ci
 
       - name: Test package integrity
-        run: npm run test:package-integrity
+        run: pnpm test:package-integrity
 
       - name: Debug
         run: |
-          echo "::group::Node & npm versions"
+          echo "::group::Node & pnpm versions"
           node -v
-          npm -v
+          pnpm -v
           echo "::endgroup::"
 
-          echo "::group::npm config (redacted)"
-          npm config get registry || true
+          echo "::group::pnpm config (redacted)"
+          pnpm config get registry || true
           npm config list -l | sed 's/_authToken.*/_authToken=[REDACTED]/' || true
           echo "::endgroup::"
 
@@ -60,8 +60,8 @@ jobs:
           echo "::endgroup::"
 
           echo "::group::Registry package info"
-          npm view decap-server version || true
-          npm view decap-server versions --json || true
+          pnpm view decap-server version || true
+          pnpm view decap-server versions --json || true
           echo "::endgroup::"
 
           echo "::group::Lerna packages"
@@ -69,5 +69,5 @@ jobs:
           echo "::endgroup::"
 
       - name: Publish to npm
-        run: npm run lerna:publish -- --loglevel silly
+        run: pnpm lerna:publish -- --loglevel silly
         # No NODE_AUTH_TOKEN needed - uses OIDC automatically via trusted publishers

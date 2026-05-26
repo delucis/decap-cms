@@ -13,7 +13,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "webpack",
-    "prestart": "npm run build",
+    "prestart": "pnpm build",
     "start": "node dist/index.js",
     "develop": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' --files src/index.ts",
     "test": "jest",

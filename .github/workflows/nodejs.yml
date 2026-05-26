@@ -45,15 +45,15 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           check-latest: true
-          cache: 'npm'
+          cache: 'pnpm'
       - name: log versions
-        run: node --version && npm --version
+        run: node --version && pnpm --version
       - name: install dependencies (skip Cypress binary)
-        run: npm ci
+        run: pnpm i
         env:
           CYPRESS_INSTALL_BINARY: 0
       - name: run lint + types + unit tests
-        run: npm run test:ci
+        run: pnpm test:ci
 
   e2e:
     needs: changes
@@ -66,7 +66,7 @@ jobs:
         with:
           node-version: 24.x
           check-latest: true
-          cache: 'npm'
+          cache: 'pnpm'
       - name: Cache Nx local cache
         uses: actions/cache@v4
         with:
@@ -82,13 +82,13 @@ jobs:
           restore-keys: |
             cypress-${{ runner.os }}-
       - name: install dependencies
-        run: npm ci
+        run: pnpm i
       - name: build demo site
-        run: npm run build:demo
+        run: pnpm build:demo
       - name: test package integrity
-        run: npm run test:package-integrity
+        run: pnpm test:package-integrity
       - name: run e2e tests
-        run: npm run test:e2e:run-ci
+        run: pnpm test:e2e:run-ci
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           NODE_OPTIONS: --max-old-space-size=4096

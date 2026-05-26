@@ -5,7 +5,7 @@
  *
  * This script verifies that the built npm packages work correctly before publishing.
  * It tests:
- * 1. Package can be packed (npm pack)
+ * 1. Package can be packed (pnpm pack)
  * 2. Package doesn't have Node.js-only dependencies that break browser bundlers
  * 3. Package.json has required fields
  *
@@ -86,9 +86,9 @@ function checkDistForNodeProtocol(packageDir) {
 function testPackagePack(packageName) {
   const packageDir = join(ROOT_DIR, 'packages', packageName);
 
-  log(`Testing npm pack for ${packageName}...`);
+  log(`Testing pnpm pack for ${packageName}...`);
 
-  const result = spawnSync('npm', ['pack', '--dry-run'], {
+  const result = spawnSync('pnpm', ['pack', '--dry-run'], {
     cwd: packageDir,
     encoding: 'utf8',
     stdio: 'pipe',
@@ -96,12 +96,12 @@ function testPackagePack(packageName) {
   });
 
   if (result.status !== 0) {
-    error(`npm pack failed for ${packageName}`);
+    error(`pnpm pack failed for ${packageName}`);
     error(result.stderr);
     return false;
   }
 
-  log(`  npm pack OK for ${packageName}`);
+  log(`  pnpm pack OK for ${packageName}`);
   return true;
 }
 
