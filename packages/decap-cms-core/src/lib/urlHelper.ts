@@ -12,10 +12,6 @@ function getUrl(urlString: string, direct?: boolean) {
   return `${direct ? '/#' : ''}${urlString}`;
 }
 
-export function getCollectionUrl(collectionName: string, direct?: boolean) {
-  return getUrl(`/collections/${collectionName}`, direct);
-}
-
 export function getNewEntryUrl(collectionName: string, direct?: boolean) {
   return getUrl(`/collections/${collectionName}/new`, direct);
 }

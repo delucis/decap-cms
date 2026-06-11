@@ -69,15 +69,6 @@ export const pullRequest = gql`
   ${repository}
 `;
 
-export const treeEntry = gql`
-  fragment TreeEntryParts on TreeEntry {
-    path: name
-    sha: oid
-    type
-    mode
-  }
-`;
-
 export const fileEntry = gql`
   fragment FileEntryParts on TreeEntry {
     name

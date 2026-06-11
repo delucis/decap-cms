@@ -17,7 +17,7 @@ import status from './status';
 import notifications from './notifications';
 
 import type { Status } from '../constants/publishModes';
-import type { State, Collection } from '../types/redux';
+import type { State } from '../types/redux';
 
 const reducers = {
   auth,
@@ -44,10 +44,6 @@ export default reducers;
  */
 export function selectEntry(state: State, collection: string, slug: string) {
   return fromEntries.selectEntry(state.entries, collection, slug);
-}
-
-export function selectEntries(state: State, collection: Collection) {
-  return fromEntries.selectEntries(state.entries, collection);
 }
 
 export function selectPublishedSlugs(state: State, collection: string) {

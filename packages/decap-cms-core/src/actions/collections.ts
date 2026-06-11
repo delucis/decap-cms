@@ -1,5 +1,5 @@
 import { history } from '../routing/history';
-import { getCollectionUrl, getNewEntryUrl } from '../lib/urlHelper';
+import { getNewEntryUrl } from '../lib/urlHelper';
 
 export function searchCollections(query: string, collection: string) {
   if (collection) {
@@ -7,10 +7,6 @@ export function searchCollections(query: string, collection: string) {
   } else {
     history.push(`/search/${query}`);
   }
-}
-
-export function showCollection(collectionName: string) {
-  history.push(getCollectionUrl(collectionName));
 }
 
 export function createNewEntry(collectionName: string) {
