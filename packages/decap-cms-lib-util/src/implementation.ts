@@ -49,13 +49,6 @@ export interface UnpublishedEntry {
   updatedAt: string;
 }
 
-export interface Map {
-  get: <T>(key: string, defaultValue?: T) => T;
-  getIn: <T>(key: string[], defaultValue?: T) => T;
-  setIn: <T>(key: string[], value: T) => Map;
-  set: <T>(key: string, value: T) => Map;
-}
-
 export type DataFile = {
   path: string;
   slug: string;
@@ -83,8 +76,6 @@ export type PersistOptions = {
   status?: string;
   hasSubfolders?: boolean;
 };
-
-export type DeleteOptions = {};
 
 export type Credentials = { token: string | {}; refresh_token?: string };
 

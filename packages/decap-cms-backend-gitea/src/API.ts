@@ -58,25 +58,6 @@ export interface ChangeFileOperation {
   sha?: string;
 }
 
-interface MetaDataObjects {
-  entry: { path: string; sha: string };
-  files: MediaFile[];
-}
-
-export interface Metadata {
-  type: string;
-  objects: MetaDataObjects;
-  branch: string;
-  status: string;
-  collection: string;
-  commitMessage: string;
-  version?: string;
-  user: string;
-  title?: string;
-  description?: string;
-  timeStamp: string;
-}
-
 export interface BlobArgs {
   sha: string;
   repoURL: string;
@@ -87,11 +68,6 @@ type Param = string | number | undefined;
 
 export type Options = RequestInit & {
   params?: Record<string, Param | Record<string, Param> | string[]>;
-};
-
-type MediaFile = {
-  sha: string;
-  path: string;
 };
 
 export default class API {

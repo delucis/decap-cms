@@ -466,48 +466,6 @@ export interface CmsMediaLibrary {
   config?: CmsMediaLibraryOptions;
 }
 
-export type SlugConfig = StaticallyTypedRecord<{
-  encoding: string;
-  clean_accents: boolean;
-  sanitize_replacement: string;
-}>;
-
-type BackendObject = {
-  name: string;
-  repo?: string | null;
-  open_authoring?: boolean;
-  branch?: string;
-  api_root?: string;
-  squash_merges?: boolean;
-  use_graphql?: boolean;
-  preview_context?: string;
-  identity_url?: string;
-  gateway_url?: string;
-  large_media_url?: string;
-  use_large_media_transforms_in_media_library?: boolean;
-  commit_messages: Map<string, string>;
-};
-
-type Backend = StaticallyTypedRecord<Backend> & BackendObject;
-
-export type Config = StaticallyTypedRecord<{
-  backend: Backend;
-  media_folder: string;
-  public_folder: string;
-  publish_mode?: string;
-  media_library: StaticallyTypedRecord<{ name: string }> & { name: string };
-  locale?: string;
-  slug: SlugConfig;
-  media_folder_relative?: boolean;
-  base_url?: string;
-  site_id?: string;
-  site_url?: string;
-  show_preview_links?: boolean;
-  isFetching?: boolean;
-  integrations: List<Integration>;
-  collections: List<StaticallyTypedRecord<{ name: string }>>;
-}>;
-
 type PagesObject = {
   [collection: string]: { isFetching: boolean; page: number; ids: List<string> };
 };
@@ -693,8 +651,6 @@ export interface MediaLibraryInstance {
   enableStandalone: () => boolean;
 }
 
-export type DisplayURL = { id: string; path: string } | string;
-
 export type MediaFile = BackendMediaFile & { key?: string };
 
 export type MediaFileMap = StaticallyTypedRecord<MediaFile>;
@@ -717,8 +673,6 @@ export type MediaLibrary = StaticallyTypedRecord<{
   displayURLs: StaticallyTypedRecord<DisplayURLsObject> & DisplayURLsObject;
   isLoading: boolean;
 }>;
-
-export type Hook = string | boolean;
 
 export type Integrations = StaticallyTypedRecord<{
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -743,12 +697,6 @@ export interface State {
   search: Search;
   status: Status;
   notifications: NotificationsState;
-}
-
-export interface Integration {
-  hooks: string[];
-  collections?: string | string[];
-  provider: string;
 }
 
 interface EntryPayload {
@@ -813,10 +761,6 @@ export interface EntriesGroupFailurePayload {
 
 export interface ChangeViewStylePayload {
   style: string;
-}
-
-export interface EntriesMoveSuccessPayload extends EntryPayload {
-  entries: EntryObject[];
 }
 
 export interface EntriesAction extends Action<string> {
