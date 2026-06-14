@@ -72,7 +72,7 @@ function inferFrontmatterFormat(str: string) {
   }
 }
 
-export function getFormatOpts(format?: Language, customDelimiter?: Delimiter) {
+function getFormatOpts(format?: Language, customDelimiter?: Delimiter) {
   if (!format) {
     return undefined;
   }
@@ -91,7 +91,7 @@ export function getFormatOpts(format?: Language, customDelimiter?: Delimiter) {
   };
 }
 
-export class FrontmatterFormatter {
+class FrontmatterFormatter {
   format?: Format;
 
   constructor(format?: Language, customDelimiter?: Delimiter) {

@@ -14,7 +14,7 @@ interface API {
   requestFunction?: (req: ApiRequest) => Promise<Response>;
 }
 
-export type ApiRequestObject = {
+type ApiRequestObject = {
   url: string;
   params?: Record<string, string | boolean | number>;
   method?: 'POST' | 'PUT' | 'DELETE' | 'HEAD' | 'PATCH';
@@ -48,7 +48,7 @@ async function parseJsonResponse(response: Response) {
   return json;
 }
 
-export function parseResponse(response: Response) {
+function parseResponse(response: Response) {
   const contentType = response.headers.get('Content-Type');
   if (contentType && contentType.match(/json/)) {
     return parseJsonResponse(response);
@@ -146,7 +146,7 @@ type RequestConfig = Omit<RequestInit, 'headers'> &
     params?: ParamObject;
   };
 
-export const apiRoots = {
+const apiRoots = {
   github: 'https://api.github.com',
   gitlab: 'https://gitlab.com/api/v4',
   bitbucket: 'https://api.bitbucket.org/2.0',
@@ -184,7 +184,7 @@ function handleRequestError(error: FetchError, responseStatus: number, backend: 
   throw new APIError(error.message, responseStatus, backend);
 }
 
-export async function apiRequest(
+async function apiRequest(
   path: string,
   config: RequestConfig,
   parser = (response: Response) => parseResponse(response),

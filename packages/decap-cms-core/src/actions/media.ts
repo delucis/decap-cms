@@ -42,7 +42,7 @@ export function loadAssetFailure(path: string, error: Error) {
   return { type: LOAD_ASSET_FAILURE, payload: { path, error } } as const;
 }
 
-export function loadAsset(resolvedPath: string) {
+function loadAsset(resolvedPath: string) {
   return async (dispatch: ThunkDispatch<State, {}, AnyAction>, getState: () => State) => {
     try {
       dispatch(loadAssetRequest(resolvedPath));

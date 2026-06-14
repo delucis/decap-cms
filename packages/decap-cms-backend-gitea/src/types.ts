@@ -21,7 +21,7 @@ export type GiteaUser = {
   website: string;
 };
 
-export type GiteaTeam = {
+type GiteaTeam = {
   can_create_org_repo: boolean;
   description: string;
   id: number;
@@ -33,7 +33,7 @@ export type GiteaTeam = {
   units_map: Map<string, string>;
 };
 
-export type GiteaOrganization = {
+type GiteaOrganization = {
   avatar_url: string;
   description: string;
   full_name: string;

@@ -81,9 +81,9 @@ export const ENTRY_PERSIST_REQUEST = 'ENTRY_PERSIST_REQUEST';
 export const ENTRY_PERSIST_SUCCESS = 'ENTRY_PERSIST_SUCCESS';
 export const ENTRY_PERSIST_FAILURE = 'ENTRY_PERSIST_FAILURE';
 
-export const ENTRY_DELETE_REQUEST = 'ENTRY_DELETE_REQUEST';
+const ENTRY_DELETE_REQUEST = 'ENTRY_DELETE_REQUEST';
 export const ENTRY_DELETE_SUCCESS = 'ENTRY_DELETE_SUCCESS';
-export const ENTRY_DELETE_FAILURE = 'ENTRY_DELETE_FAILURE';
+const ENTRY_DELETE_FAILURE = 'ENTRY_DELETE_FAILURE';
 
 export const ADD_DRAFT_ENTRY_MEDIA_FILE = 'ADD_DRAFT_ENTRY_MEDIA_FILE';
 export const REMOVE_DRAFT_ENTRY_MEDIA_FILE = 'REMOVE_DRAFT_ENTRY_MEDIA_FILE';
@@ -94,7 +94,7 @@ export const CHANGE_VIEW_STYLE = 'CHANGE_VIEW_STYLE';
  * Simple Action Creators (Internal)
  * We still need to export them for tests
  */
-export function entryLoading(collection: Collection, slug: string) {
+function entryLoading(collection: Collection, slug: string) {
   return {
     type: ENTRY_REQUEST,
     payload: {
@@ -114,7 +114,7 @@ export function entryLoaded(collection: Collection, entry: EntryValue) {
   };
 }
 
-export function entryLoadError(error: Error, collection: Collection, slug: string) {
+function entryLoadError(error: Error, collection: Collection, slug: string) {
   return {
     type: ENTRY_FAILURE,
     payload: {
@@ -153,7 +153,7 @@ export function entriesLoaded(
   };
 }
 
-export function entriesFailed(collection: Collection, error: Error) {
+function entriesFailed(collection: Collection, error: Error) {
   return {
     type: ENTRIES_FAILURE,
     error: 'Failed to load entries',
@@ -341,7 +341,7 @@ export function entryPersistFail(collection: Collection, entry: EntryMap, error:
   };
 }
 
-export function entryDeleting(collection: Collection, slug: string) {
+function entryDeleting(collection: Collection, slug: string) {
   return {
     type: ENTRY_DELETE_REQUEST,
     payload: {
@@ -361,7 +361,7 @@ export function entryDeleted(collection: Collection, slug: string) {
   };
 }
 
-export function entryDeleteFail(collection: Collection, slug: string, error: Error) {
+function entryDeleteFail(collection: Collection, slug: string, error: Error) {
   return {
     type: ENTRY_DELETE_FAILURE,
     payload: {
@@ -388,7 +388,7 @@ export function createDraftFromEntry(entry: EntryValue) {
   };
 }
 
-export function draftDuplicateEntry(entry: EntryMap) {
+function draftDuplicateEntry(entry: EntryMap) {
   return {
     type: DRAFT_CREATE_DUPLICATE_FROM_ENTRY,
     payload: createEntry(entry.get('collection'), '', '', {

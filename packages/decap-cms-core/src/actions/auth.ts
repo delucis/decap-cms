@@ -34,13 +34,13 @@ export function authError(error: Error) {
   } as const;
 }
 
-export function doneAuthenticating() {
+function doneAuthenticating() {
   return {
     type: AUTH_REQUEST_DONE,
   } as const;
 }
 
-export function useOpenAuthoring() {
+function useOpenAuthoring() {
   return {
     type: USE_OPEN_AUTHORING,
   } as const;

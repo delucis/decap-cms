@@ -4,7 +4,7 @@ import { OrderedMap } from 'immutable';
 export const SIMPLE = 'simple';
 export const EDITORIAL_WORKFLOW = 'editorial_workflow';
 
-export const Statues = {
+const Statues = {
   DRAFT: 'draft',
   PENDING_REVIEW: 'pending_review',
   PENDING_PUBLISH: 'pending_publish',

@@ -25,7 +25,7 @@ type FsOptions = {
   logger: winston.Logger;
 };
 
-export function localFsMiddleware({ repoPath, logger }: FsOptions) {
+function localFsMiddleware({ repoPath, logger }: FsOptions) {
   return async function (req: express.Request, res: express.Response) {
     try {
       const { body } = req;

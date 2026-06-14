@@ -46,7 +46,7 @@ function validIRIChar(char: string) {
   return uriChars.test(char) || ucsChars.test(char);
 }
 
-export function getCharReplacer(
+function getCharReplacer(
   encoding: string,
   options: {
     replacement: NonNullable<CmsSlug['sanitize_replacement']>;

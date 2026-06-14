@@ -1,4 +1,4 @@
-export const API_ERROR = 'API_ERROR';
+const API_ERROR = 'API_ERROR';
 
 export default class APIError extends Error {
   message: string;

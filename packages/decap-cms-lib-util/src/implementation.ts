@@ -356,7 +356,7 @@ type GetLocalTreeArgs = GetKeyArgs & {
   localForage: LocalForage;
 };
 
-export async function persistLocalTree({
+async function persistLocalTree({
   localForage,
   localTree,
   branch,
@@ -370,13 +370,7 @@ export async function persistLocalTree({
   );
 }
 
-export async function getLocalTree({
-  localForage,
-  branch,
-  folder,
-  extension,
-  depth,
-}: GetLocalTreeArgs) {
+async function getLocalTree({ localForage, branch, folder, extension, depth }: GetLocalTreeArgs) {
   const localTree = await localForage.getItem<LocalTree>(
     getLocalKey({ branch, folder, extension, depth }),
   );

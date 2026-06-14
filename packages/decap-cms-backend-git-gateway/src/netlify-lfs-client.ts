@@ -18,7 +18,7 @@ type ClientConfig = {
   transformImages: ImageTransformations | boolean;
 };
 
-export function matchPath({ patterns }: ClientConfig, path: string) {
+function matchPath({ patterns }: ClientConfig, path: string) {
   return patterns.some(pattern => minimatch(path, pattern, { matchBase: true }));
 }
 

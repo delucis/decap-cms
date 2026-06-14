@@ -99,5 +99,3 @@ const loaders = {
 export function getLanguageLoader(mode) {
   return loaders[mode] || null;
 }
-
-export default loaders;

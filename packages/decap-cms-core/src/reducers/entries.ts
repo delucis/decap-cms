@@ -376,7 +376,7 @@ export function selectEntriesGroup(entries: Entries, collection: string) {
   return group?.get(collection) || Map();
 }
 
-export function selectEntriesGroupField(entries: Entries, collection: string) {
+function selectEntriesGroupField(entries: Entries, collection: string) {
   const groups = selectEntriesGroup(entries, collection);
   const value = groups?.valueSeq().find(v => v?.get('active') === true);
   return value;
@@ -393,7 +393,7 @@ export function selectEntriesSortFields(entries: Entries, collection: string) {
   return values;
 }
 
-export function selectEntriesFilterFields(entries: Entries, collection: string) {
+function selectEntriesFilterFields(entries: Entries, collection: string) {
   const filter = selectEntriesFilter(entries, collection);
   const values =
     filter

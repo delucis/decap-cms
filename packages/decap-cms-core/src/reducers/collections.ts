@@ -247,7 +247,7 @@ export function selectField(collection: Collection, key: string) {
   return field;
 }
 
-export function traverseFields(
+function traverseFields(
   fields: List<EntryField>,
   updater: (field: EntryField) => EntryField,
   done = () => false,

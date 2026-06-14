@@ -1,4 +1,4 @@
-export const ACCESS_TOKEN_ERROR = 'ACCESS_TOKEN_ERROR';
+const ACCESS_TOKEN_ERROR = 'ACCESS_TOKEN_ERROR';
 
 export default class AccessTokenError extends Error {
   message: string;

@@ -3,7 +3,7 @@ import { Map } from 'immutable';
 import Algolia from './providers/algolia/implementation';
 import AssetStore from './providers/assetStore/implementation';
 
-export function resolveIntegrations(integrationsConfig, getToken) {
+function resolveIntegrations(integrationsConfig, getToken) {
   let integrationInstances = Map({});
   integrationsConfig.get('providers').forEach((providerData, providerName) => {
     switch (providerName) {

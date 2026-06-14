@@ -427,7 +427,7 @@ function mediaInserted(mediaPath: string | string[]) {
   return { type: MEDIA_INSERT, payload: { mediaPath } } as const;
 }
 
-export function mediaLoading(page: number) {
+function mediaLoading(page: number) {
   return {
     type: MEDIA_LOAD_REQUEST,
     payload: { page },
@@ -443,23 +443,23 @@ interface MediaOptions {
   dynamicSearchQuery?: string;
 }
 
-export function mediaLoaded(files: ImplementationMediaFile[], opts: MediaOptions = {}) {
+function mediaLoaded(files: ImplementationMediaFile[], opts: MediaOptions = {}) {
   return {
     type: MEDIA_LOAD_SUCCESS,
     payload: { files, ...opts },
   } as const;
 }
 
-export function mediaLoadFailed(opts: MediaOptions = {}) {
+function mediaLoadFailed(opts: MediaOptions = {}) {
   const { privateUpload } = opts;
   return { type: MEDIA_LOAD_FAILURE, payload: { privateUpload } } as const;
 }
 
-export function mediaPersisting() {
+function mediaPersisting() {
   return { type: MEDIA_PERSIST_REQUEST } as const;
 }
 
-export function mediaPersisted(file: ImplementationMediaFile, opts: MediaOptions = {}) {
+function mediaPersisted(file: ImplementationMediaFile, opts: MediaOptions = {}) {
   const { privateUpload } = opts;
   return {
     type: MEDIA_PERSIST_SUCCESS,
@@ -467,12 +467,12 @@ export function mediaPersisted(file: ImplementationMediaFile, opts: MediaOptions
   } as const;
 }
 
-export function mediaPersistFailed(opts: MediaOptions = {}) {
+function mediaPersistFailed(opts: MediaOptions = {}) {
   const { privateUpload } = opts;
   return { type: MEDIA_PERSIST_FAILURE, payload: { privateUpload } } as const;
 }
 
-export function mediaDeleting() {
+function mediaDeleting() {
   return { type: MEDIA_DELETE_REQUEST } as const;
 }
 
@@ -484,23 +484,23 @@ export function mediaDeleted(file: MediaFile, opts: MediaOptions = {}) {
   } as const;
 }
 
-export function mediaDeleteFailed(opts: MediaOptions = {}) {
+function mediaDeleteFailed(opts: MediaOptions = {}) {
   const { privateUpload } = opts;
   return { type: MEDIA_DELETE_FAILURE, payload: { privateUpload } } as const;
 }
 
-export function mediaDisplayURLRequest(key: string) {
+function mediaDisplayURLRequest(key: string) {
   return { type: MEDIA_DISPLAY_URL_REQUEST, payload: { key } } as const;
 }
 
-export function mediaDisplayURLSuccess(key: string, url: string) {
+function mediaDisplayURLSuccess(key: string, url: string) {
   return {
     type: MEDIA_DISPLAY_URL_SUCCESS,
     payload: { key, url },
   } as const;
 }
 
-export function mediaDisplayURLFailure(key: string, err: Error) {
+function mediaDisplayURLFailure(key: string, err: Error) {
   return {
     type: MEDIA_DISPLAY_URL_FAILURE,
     payload: { key, err },

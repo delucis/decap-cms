@@ -1,6 +1,6 @@
 export const TYPES_KEY = 'types';
-export const TYPE_KEY = 'typeKey';
-export const DEFAULT_TYPE_KEY = 'type';
+const TYPE_KEY = 'typeKey';
+const DEFAULT_TYPE_KEY = 'type';
 
 export function getTypedFieldForValue(field, value) {
   const typeKey = resolveFieldKeyType(field);

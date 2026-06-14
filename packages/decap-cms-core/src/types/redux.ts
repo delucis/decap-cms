@@ -12,7 +12,7 @@ import type { GlobalUI } from '../reducers/globalUI';
 import type { NotificationsState } from '../reducers/notifications';
 import type { formatExtensions } from '../formats/formats';
 
-export type CmsBackendType =
+type CmsBackendType =
   | 'azure'
   | 'git-gateway'
   | 'github'
@@ -22,9 +22,9 @@ export type CmsBackendType =
   | 'test-repo'
   | 'proxy';
 
-export type CmsMapWidgetType = 'Point' | 'LineString' | 'Polygon';
+type CmsMapWidgetType = 'Point' | 'LineString' | 'Polygon';
 
-export type CmsMarkdownWidgetButton =
+type CmsMarkdownWidgetButton =
   | 'bold'
   | 'italic'
   | 'code'
@@ -40,12 +40,12 @@ export type CmsMarkdownWidgetButton =
   | 'bulleted-list'
   | 'numbered-list';
 
-export interface CmsSelectWidgetOptionObject {
+interface CmsSelectWidgetOptionObject {
   label: string;
   value: unknown;
 }
 
-export type CmsCollectionFormatType =
+type CmsCollectionFormatType =
   | 'yml'
   | 'yaml'
   | 'toml'
@@ -55,11 +55,11 @@ export type CmsCollectionFormatType =
   | 'toml-frontmatter'
   | 'json-frontmatter';
 
-export type CmsAuthScope = 'repo' | 'public_repo';
+type CmsAuthScope = 'repo' | 'public_repo';
 
 export type CmsPublishMode = 'simple' | 'editorial_workflow';
 
-export type CmsSlugEncoding = 'unicode' | 'ascii';
+type CmsSlugEncoding = 'unicode' | 'ascii';
 
 export interface CmsI18nConfig {
   structure: 'multiple_folders' | 'multiple_files' | 'single_file';
@@ -79,12 +79,12 @@ export interface CmsFieldBase {
   comment?: string;
 }
 
-export interface CmsFieldBoolean {
+interface CmsFieldBoolean {
   widget: 'boolean';
   default?: boolean;
 }
 
-export interface CmsFieldCode {
+interface CmsFieldCode {
   widget: 'code';
   default?: unknown;
 
@@ -94,7 +94,7 @@ export interface CmsFieldCode {
   output_code_only?: boolean;
 }
 
-export interface CmsFieldColor {
+interface CmsFieldColor {
   widget: 'color';
   default?: string;
 
@@ -102,7 +102,7 @@ export interface CmsFieldColor {
   enableAlpha?: boolean;
 }
 
-export interface CmsFieldDateTime {
+interface CmsFieldDateTime {
   widget: 'datetime';
   default?: string;
 
@@ -125,7 +125,7 @@ export interface CmsFieldDateTime {
   pickerUtc?: boolean;
 }
 
-export interface CmsFieldFileOrImage {
+interface CmsFieldFileOrImage {
   widget: 'file' | 'image';
   default?: string;
 
@@ -162,7 +162,7 @@ export interface CmsFieldList {
   types?: (CmsFieldBase & CmsFieldObject)[];
 }
 
-export interface CmsFieldMap {
+interface CmsFieldMap {
   widget: 'map';
   default?: string;
 
@@ -170,7 +170,7 @@ export interface CmsFieldMap {
   type?: CmsMapWidgetType;
 }
 
-export interface CmsFieldMarkdown {
+interface CmsFieldMarkdown {
   widget: 'markdown';
   default?: string;
 
@@ -185,7 +185,7 @@ export interface CmsFieldMarkdown {
   editorComponents?: string[];
 }
 
-export interface CmsFieldRichText {
+interface CmsFieldRichText {
   widget: 'richtext';
   default?: string;
 
@@ -200,7 +200,7 @@ export interface CmsFieldRichText {
   editorComponents?: string[];
 }
 
-export interface CmsFieldNumber {
+interface CmsFieldNumber {
   widget: 'number';
   default?: string | number;
 
@@ -216,7 +216,7 @@ export interface CmsFieldNumber {
   valueType?: 'int' | 'float' | string;
 }
 
-export interface CmsFieldSelect {
+interface CmsFieldSelect {
   widget: 'select';
   default?: string | string[];
 
@@ -226,7 +226,7 @@ export interface CmsFieldSelect {
   max?: number;
 }
 
-export interface CmsFieldRelation {
+interface CmsFieldRelation {
   widget: 'relation';
   default?: string | string[];
 
@@ -256,19 +256,19 @@ export interface CmsFieldRelation {
   optionsLength?: number;
 }
 
-export interface CmsFieldHidden {
+interface CmsFieldHidden {
   widget: 'hidden';
   default?: unknown;
 }
 
-export interface CmsFieldStringOrText {
+interface CmsFieldStringOrText {
   // This is the default widget, so declaring its type is optional.
   widget?: 'string' | 'text';
   default?: string;
   visualEditing?: boolean;
 }
 
-export interface CmsFieldMeta {
+interface CmsFieldMeta {
   name: string;
   label: string;
   widget: string;
@@ -297,7 +297,7 @@ export type CmsField = CmsFieldBase &
     | CmsFieldMeta
   );
 
-export interface CmsCollectionFile {
+interface CmsCollectionFile {
   name: string;
   label: string;
   file: string;
@@ -326,7 +326,7 @@ export interface ViewGroup {
   id: string;
 }
 
-export interface SortableField {
+interface SortableField {
   field: string;
   label?: string;
   default_sort?: boolean | 'asc' | 'desc';
@@ -383,7 +383,7 @@ export interface CmsCollection {
   sortableFields?: (string | SortableField)[];
 }
 
-export interface CmsBackend {
+interface CmsBackend {
   name: CmsBackendType;
   auth_scope?: CmsAuthScope;
   open_authoring?: boolean;
@@ -418,7 +418,7 @@ export interface CmsLocalBackend {
   allowed_hosts?: string[];
 }
 
-export interface CmsIssueReports {
+interface CmsIssueReports {
   url?: string;
 }
 
@@ -459,9 +459,9 @@ export interface CmsConfig {
   isFetching: boolean;
 }
 
-export type CmsMediaLibraryOptions = unknown; // TODO: type properly
+type CmsMediaLibraryOptions = unknown; // TODO: type properly
 
-export interface CmsMediaLibrary {
+interface CmsMediaLibrary {
   name: string;
   config?: CmsMediaLibraryOptions;
 }
@@ -538,7 +538,7 @@ export type EntryMap = StaticallyTypedRecord<EntryObject>;
 
 export type Entry = EntryMap & EntryObject;
 
-export type FieldsErrors = StaticallyTypedRecord<{ [field: string]: { type: string }[] }>;
+type FieldsErrors = StaticallyTypedRecord<{ [field: string]: { type: string }[] }>;
 
 export type EntryDraft = StaticallyTypedRecord<{
   entry: Entry;
@@ -667,7 +667,7 @@ interface DisplayURLsObject {
   [id: string]: DisplayURLState;
 }
 
-export type MediaLibrary = StaticallyTypedRecord<{
+type MediaLibrary = StaticallyTypedRecord<{
   externalLibrary?: MediaLibraryInstance;
   files: MediaFile[];
   displayURLs: StaticallyTypedRecord<DisplayURLsObject> & DisplayURLsObject;
@@ -679,7 +679,7 @@ export type Integrations = StaticallyTypedRecord<{
   hooks: { [collectionOrHook: string]: any };
 }>;
 
-export type Cursors = StaticallyTypedRecord<{}>;
+type Cursors = StaticallyTypedRecord<{}>;
 
 export interface State {
   auth: Auth;

@@ -28,14 +28,14 @@ export const CLEAR_REQUESTS = 'CLEAR_REQUESTS';
  * Simple Action Creators (Internal)
  * We still need to export them for tests
  */
-export function searchingEntries(searchTerm: string, searchCollections: string[], page: number) {
+function searchingEntries(searchTerm: string, searchCollections: string[], page: number) {
   return {
     type: SEARCH_ENTRIES_REQUEST,
     payload: { searchTerm, searchCollections, page },
   } as const;
 }
 
-export function searchSuccess(entries: EntryValue[], page: number) {
+function searchSuccess(entries: EntryValue[], page: number) {
   return {
     type: SEARCH_ENTRIES_SUCCESS,
     payload: {
@@ -45,14 +45,14 @@ export function searchSuccess(entries: EntryValue[], page: number) {
   } as const;
 }
 
-export function searchFailure(error: Error) {
+function searchFailure(error: Error) {
   return {
     type: SEARCH_ENTRIES_FAILURE,
     payload: { error },
   } as const;
 }
 
-export function querying(searchTerm: string, request?: QueryRequest) {
+function querying(searchTerm: string, request?: QueryRequest) {
   return {
     type: QUERY_REQUEST,
     payload: {
@@ -72,7 +72,7 @@ type QueryResponse = {
   query: string;
 };
 
-export function querySuccess(namespace: string, hits: EntryValue[]) {
+function querySuccess(namespace: string, hits: EntryValue[]) {
   return {
     type: QUERY_SUCCESS,
     payload: {
@@ -82,7 +82,7 @@ export function querySuccess(namespace: string, hits: EntryValue[]) {
   } as const;
 }
 
-export function queryFailure(error: Error) {
+function queryFailure(error: Error) {
   return {
     type: QUERY_FAILURE,
     payload: { error },
@@ -97,7 +97,7 @@ export function clearSearch() {
   return { type: SEARCH_CLEAR } as const;
 }
 
-export function clearRequests() {
+function clearRequests() {
   return { type: CLEAR_REQUESTS } as const;
 }
 

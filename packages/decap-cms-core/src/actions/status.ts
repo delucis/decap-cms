@@ -9,13 +9,13 @@ export const STATUS_REQUEST = 'STATUS_REQUEST';
 export const STATUS_SUCCESS = 'STATUS_SUCCESS';
 export const STATUS_FAILURE = 'STATUS_FAILURE';
 
-export function statusRequest() {
+function statusRequest() {
   return {
     type: STATUS_REQUEST,
   } as const;
 }
 
-export function statusSuccess(status: {
+function statusSuccess(status: {
   auth: { status: boolean };
   api: { status: boolean; statusPage: string };
 }) {
@@ -25,7 +25,7 @@ export function statusSuccess(status: {
   } as const;
 }
 
-export function statusFailure(error: Error) {
+function statusFailure(error: Error) {
   return {
     type: STATUS_FAILURE,
     payload: { error },
